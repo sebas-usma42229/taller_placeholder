@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taller de JSONplaceholder</title>
+    <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body>
+    <h1>Taller de Peticiones a JSONplaceholder</h1>
+
+    <div id="listado-registros">
+        <h2>Todos los Registros</h2>
+        <button id="obtener-registros">Obtener Registros</button>
+        <div id="registros"></div>
+    </div>
+
+    <div id="crear-registro">
+        <h2>Crear Nuevo Registro</h2>
+        <form id="form-crear">
+            <label for="titulo">Título:</label>
+            <input type="text" id="titulo" name="titulo" required>
+            <label for="cuerpo">Cuerpo:</label>
+            <textarea id="cuerpo" name="cuerpo" required></textarea>
+            <button type="submit">Crear Registro</button>
+        </form>
+    </div>
+
+    <script src="/assets/js/index.js"></script>
+</body>
+</html>
