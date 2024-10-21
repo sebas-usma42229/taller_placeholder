@@ -1,18 +1,18 @@
-// URL base de JSONplaceholder
+
 const API_URL = 'https://jsonplaceholder.typicode.com/posts';
 
-// Obtener elementos del DOM
+
 const obtenerRegistrosBtn = document.getElementById('obtener-registros');
 const registrosDiv = document.getElementById('registros');
 const formCrear = document.getElementById('form-crear');
 
-// Función para hacer la petición GET y obtener los registros
+
 const obtenerRegistros = () => {
     fetch(API_URL)
         .then(response => response.json())
         .then(data => {
             registrosDiv.innerHTML = '';
-            data.forEach(registro => { // Limitar a 10 registros
+            data.forEach(registro => { 
                 const registroDiv = document.createElement('div');
                 registroDiv.classList.add('registro');
                 registroDiv.innerHTML = `
@@ -27,7 +27,7 @@ const obtenerRegistros = () => {
         .catch(error => console.error('Error al obtener los registros:', error));
 };
 
-// Función para crear un nuevo registro con POST
+
 const crearRegistro = (e) => {
     e.preventDefault();
     const titulo = document.getElementById('titulo').value;
@@ -50,12 +50,12 @@ const crearRegistro = (e) => {
     .then(data => {
         alert('Registro creado exitosamente');
         formCrear.reset();
-        obtenerRegistros(); // Actualizar los registros
+        obtenerRegistros(); 
     })
     .catch(error => console.error('Error al crear el registro:', error));
 };
 
-// Función para editar un registro con PUT
+
 const editarRegistro = (id) => {
     const nuevoTitulo = prompt('Nuevo título:');
     const nuevoCuerpo = prompt('Nuevo cuerpo:');
@@ -75,13 +75,13 @@ const editarRegistro = (id) => {
         .then(response => response.json())
         .then(data => {
             alert('Registro editado correctamente');
-            obtenerRegistros(); // Actualizar los registros
+            obtenerRegistros(); 
         })
         .catch(error => console.error('Error al editar el registro:', error));
     }
 };
 
-// Función para eliminar un registro con DELETE
+
 const eliminarRegistro = (id) => {
     if (confirm('¿Estás seguro de eliminar este registro?')) {
         fetch(`${API_URL}/${id}`, {
@@ -90,7 +90,7 @@ const eliminarRegistro = (id) => {
         .then(response => {
             if (response.ok) {
                 alert('Registro eliminado');
-                obtenerRegistros(); // Actualizar los registros
+                obtenerRegistros(); 
             } else {
                 alert('Error al eliminar el registro');
             }
@@ -98,7 +98,5 @@ const eliminarRegistro = (id) => {
         .catch(error => console.error('Error al eliminar el registro:', error));
     }
 };
-
-// Asignar eventos a los botones
 obtenerRegistrosBtn.addEventListener('click', obtenerRegistros);
 formCrear.addEventListener('submit', crearRegistro);
